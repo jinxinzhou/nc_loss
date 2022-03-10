@@ -18,7 +18,7 @@ $ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs
 ~~~
 
 # Kangning:
-## MSE width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
+## MSE: width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
 ~~~python
 $ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs100-1/ 1 8 100
 $ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs100-123/ 123 8 100
@@ -67,7 +67,7 @@ $ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-
 $ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs800-321/ 321 16 800
 ~~~
 
-## Label Smooth width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
+## Label Smooth: width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
 ~~~python
 $ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs100-1/ 1 8 100
 $ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs100-123/ 123 8 100
@@ -115,4 +115,104 @@ $ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epo
 $ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs800-123/ 123 16 800
 $ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs800-321/ 321 16 800
 ~~~
+
+# Sheng:
+## CE: width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
+~~~python
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs100-1/ 1 8 100
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs100-123/ 123 8 100
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs100-321/ 321 8 100
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs200-1/ 1 8 200
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs200-123/ 123 8 200
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs200-321/ 321 8 200
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs400-1/ 1 8 400
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs400-123/ 123 8 400
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs400-321/ 321 8 400
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs800-1/ 1 8 800
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs800-123/ 123 8 800
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs800-321/ 321 8 800
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs100-1/ 1 16 100
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs100-123/ 123 16 100
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs100-321/ 321 16 100
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs200-1/ 1 16 200
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs200-123/ 123 16 200
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs200-321/ 321 16 200
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs400-1/ 1 16 400
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs400-123/ 123 16 400
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs400-321/ 321 16 400
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs800-1/ 1 16 800
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs800-123/ 123 16 800
+$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs800-321/ 321 16 800
+~~~
+
+## Focal loss: width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
+~~~python
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs100-1/ 1 8 100
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs100-123/ 123 8 100
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs100-321/ 321 8 100
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs200-1/ 1 8 200
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs200-123/ 123 8 200
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs200-321/ 321 8 200
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs400-1/ 1 8 400
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs400-123/ 123 8 400
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs400-321/ 321 8 400
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs800-1/ 1 8 800
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs800-123/ 123 8 800
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs800-321/ 321 8 800
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs100-1/ 1 16 100
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs100-123/ 123 16 100
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs100-321/ 321 16 100
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs200-1/ 1 16 200
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs200-123/ 123 16 200
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs200-321/ 321 16 200
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs400-1/ 1 16 400
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs400-123/ 123 16 400
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs400-321/ 321 16 400
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs800-1/ 1 16 800
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs800-123/ 123 16 800
+$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs800-321/ 321 16 800
+~~~
+
 
