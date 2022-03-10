@@ -221,7 +221,7 @@ def compute_margin(before_class_dict, after_class_dict, W, b, mu_G, device, batc
 
 def parseArgs():
     default_dataset = 'cifar100'
-    dataset_root = './'
+    dataset_root = '~/'
     model = 'wide_resnet'
     width = 10
     epoch = 400
