@@ -87,7 +87,7 @@ def loss_function_save_name(loss_function,
 
 def parseArgs():
     default_dataset = 'cifar100'
-    dataset_root = '../'
+    dataset_root = '~/'
     train_batch_size = 128
     test_batch_size = 128
     learning_rate = 0.1
