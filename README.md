@@ -16,3 +16,103 @@ Additional, I set the args.save-path as "./checkpoints/wideres26-width-cifar100-
 ~~~python
 $ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs400-1/ 1 8 400
 ~~~
+
+# Kangning:
+## MSE width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
+~~~python
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs100-1/ 1 8 100
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs100-123/ 123 8 100
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs100-321/ 321 8 100
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs200-1/ 1 8 200
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs200-123/ 123 8 200
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs200-321/ 321 8 200
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs400-1/ 1 8 400
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs400-123/ 123 8 400
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs400-321/ 321 8 400
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs800-1/ 1 8 800
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs800-123/ 123 8 800
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs800-321/ 321 8 800
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs100-1/ 1 16 100
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs100-123/ 123 16 100
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs100-321/ 321 16 100
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs200-1/ 1 16 200
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs200-123/ 123 16 200
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs200-321/ 321 16 200
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs400-1/ 1 16 400
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs400-123/ 123 16 400
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs400-321/ 321 16 400
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs800-1/ 1 16 800
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs800-123/ 123 16 800
+$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs800-321/ 321 16 800
+~~~
+
+## Label Smooth width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
+~~~python
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs100-1/ 1 8 100
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs100-123/ 123 8 100
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs100-321/ 321 8 100
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs200-1/ 1 8 200
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs200-123/ 123 8 200
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs200-321/ 321 8 200
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs400-1/ 1 8 400
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs400-123/ 123 8 400
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs400-321/ 321 8 400
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs800-1/ 1 8 800
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs800-123/ 123 8 800
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs800-321/ 321 8 800
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs100-1/ 1 16 100
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs100-123/ 123 16 100
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs100-321/ 321 16 100
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs200-1/ 1 16 200
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs200-123/ 123 16 200
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs200-321/ 321 16 200
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs400-1/ 1 16 400
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs400-123/ 123 16 400
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs400-321/ 321 16 400
+~~~
+
+~~~python
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs800-1/ 1 16 800
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs800-123/ 123 16 800
+$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs800-321/ 321 16 800
+~~~
+
