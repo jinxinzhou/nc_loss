@@ -9,8 +9,8 @@ import argparse
 import torch.backends.cudnn as cudnn
 import random
 import json
-import sys
 import os
+import numpy as np
 
 # Import dataloaders
 import Data.cifar10 as cifar10
@@ -18,23 +18,10 @@ import Data.cifar100 as cifar100
 import Data.tiny_imagenet as tiny_imagenet
 
 # Import network models
-from Net.resnet import resnet50, resnet110
+from Net.resnet import resnet50, resnet110, wide_resnet50_cifar
 from Net.resnet_tiny_imagenet import resnet50 as resnet50_ti
-from Net.wide_resnet import wide_resnet_cifar
 from Net.densenet import densenet121
-
-# Import loss functions
-from Losses.loss import cross_entropy, mean_square_error, focal_loss, focal_loss_adaptive
-from Losses.loss import mmce, mmce_weighted
-from Losses.loss import brier_score
-from Losses.loss import label_smoothing
-from Losses.loss import cos_loss
-
-# Import train and validation utilities
 from train_utils import train_single_epoch, val_single_epoch, print_and_save
-
-# Import validation metrics
-from Metrics.metrics import test_classification_net
 
 
 dataset_num_classes = {
@@ -54,7 +41,7 @@ models = {
     'resnet50': resnet50,
     'resnet50_ti': resnet50_ti,
     'resnet110': resnet110,
-    'wide_resnet': wide_resnet_cifar,
+    'wide_resnet50': wide_resnet50_cifar,
     'densenet121': densenet121
 }
 
@@ -84,10 +71,20 @@ def loss_function_save_name(loss_function,
         res_str = res_dict[loss_function]
     return res_str
 
+def set_seed(manualSeed=666):
+    random.seed(manualSeed)
+    np.random.seed(manualSeed)
+    torch.manual_seed(manualSeed)
+    torch.cuda.manual_seed(manualSeed)
+    torch.cuda.manual_seed_all(manualSeed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    os.environ['PYTHONHASHSEED'] = str(manualSeed)
+
 
 def parseArgs():
     default_dataset = 'cifar100'
-    dataset_root = '~/'
+    dataset_root = '../'
     train_batch_size = 128
     test_batch_size = 128
     learning_rate = 0.1
@@ -105,7 +102,7 @@ def parseArgs():
     model_name = None
     saved_model_name = "wide_resnet_cross_entropy_350.model"
     load_loc = './'
-    model = "wide_resnet"
+    model = "wide_resnet50"
     width = 10
     epoch = 400
     save_interval = epoch // 100
@@ -191,7 +188,7 @@ def parseArgs():
 
     parser.add_argument("--model", type=str, default=model, dest="model",
                         help='Model to train')
-    parser.add_argument("--width", type=int, default=width, dest="width",
+    parser.add_argument("--width", type=float, default=width, dest="width",
                         help='Width of wide-resnet')
     parser.add_argument("--etf", action="store_true", dest="etf",
                         help="Whether to fixed ETF fc in network")
@@ -214,7 +211,7 @@ def parseArgs():
 if __name__ == "__main__":
 
     args = parseArgs()
-    torch.manual_seed(args.seed)
+    set_seed(args.seed)
 
     if not os.path.exists(args.save_loc):
         os.makedirs(args.save_loc)
@@ -230,7 +227,7 @@ if __name__ == "__main__":
     num_classes = dataset_num_classes[args.dataset]
 
     # Choosing the model to train
-    net = models[args.model](num_classes=num_classes, etf=args.etf, bias=args.bias, width=args.width)
+    net = models[args.model](num_classes=num_classes, width=args.width)
 
     # Setting model name
     if args.model_name is None:
@@ -281,11 +278,6 @@ if __name__ == "__main__":
             batch_size=args.test_batch_size,
             pin_memory=args.gpu)
 
-        # test_loader = dataset_loader[args.dataset].get_data_loader(
-        #     root=args.dataset_root,
-        #     split='val',
-        #     batch_size=args.test_batch_size,
-        #     pin_memory=args.gpu)
     else:
         train_loader, val_loader = dataset_loader[args.dataset].get_train_valid_loader(
             batch_size=args.train_batch_size,
@@ -294,14 +286,8 @@ if __name__ == "__main__":
             pin_memory=args.gpu
         )
 
-        # test_loader = dataset_loader[args.dataset].get_test_loader(
-        #     batch_size=args.test_batch_size,
-        #     pin_memory=args.gpu
-        # )
-
     training_set_loss = {}
     val_set_loss = {}
-    # test_set_loss = {}
     val_set_err = {}
 
     for epoch in range(0, start_epoch):
@@ -332,7 +318,8 @@ if __name__ == "__main__":
                                         gamma=gamma,
                                         lamda=args.lamda,
                                         smoothing=args.smoothing,
-                                        loss_mean=args.loss_mean)
+                                        loss_mean=args.loss_mean,
+                                        num_classes=num_classes)
         val_loss, val_top1, val_top5 = val_single_epoch(epoch,
                                      net,
                                      val_loader,
@@ -340,19 +327,11 @@ if __name__ == "__main__":
                                      loss_function=args.loss_function,
                                      gamma=gamma,
                                      smoothing=args.smoothing,
-                                     lamda=args.lamda)
-        # test_loss = test_single_epoch(epoch,
-        #                               net,
-        #                               val_loader,
-        #                               device,
-        #                               loss_function=args.loss_function,
-        #                               gamma=gamma,
-        #                               lamda=args.lamda)
-        # _, val_acc, _, _, _ = test_classification_net(net, val_loader, device)
+                                     lamda=args.lamda,
+                                    num_classes=num_classes)
 
         training_set_loss[epoch] = train_loss
         val_set_loss[epoch] = val_loss
-        # test_set_loss[epoch] = test_loss
         val_set_err[epoch] = 100 - val_top1
 
         if val_top1 > best_val_acc:
@@ -380,9 +359,6 @@ if __name__ == "__main__":
 
     with open(save_name[:save_name.rfind('_')] + '_val_loss.json', 'a') as fv:
         json.dump(val_set_loss, fv)
-
-    # with open(save_name[:save_name.rfind('_')] + '_test_loss.json', 'a') as ft:
-    #     json.dump(test_set_loss, ft)
 
     with open(save_name[:save_name.rfind('_')] + '_val_error.json', 'a') as ft:
         json.dump(val_set_err, ft)
