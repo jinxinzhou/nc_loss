@@ -16,31 +16,31 @@ conda activate /scratch/qingqu_root/qingqu1/jinxinz/DL/ImgMLP
 
 
 # MSE width=1
-python train.py --bias --loss cross_entropy --save-path ./res50_cifar10/wideres50-1-cifar10-ce-epochs800-2/ --seed 2 --width 1 -e 800 --model wide_resnet50 --dataset cifar10
-python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-ce-epochs800-2/ --seed 2 --width 1 -e 800 --model wide_resnet50 --dataset cifar10
+python train.py --bias --loss mean_square_error --save-path ./res50_cifar10/wideres50-1-cifar10-mse-epochs800-2/ --seed 2 --width 1 -e 800 --model wide_resnet50 --dataset cifar10
+python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-mse-epochs800-2/ --seed 2 --width 1 -e 800 --model wide_resnet50 --dataset cifar10
 
-python train.py --bias --loss cross_entropy --save-path ./res50_cifar10/wideres50-1-cifar10-ce-epochs400-2/ --seed 2 --width 1 -e 400 --model wide_resnet50 --dataset cifar10
-python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-ce-epochs400-2/ --seed 2 --width 1 -e 400 --model wide_resnet50 --dataset cifar10
+python train.py --bias --loss mean_square_error --save-path ./res50_cifar10/wideres50-1-cifar10-mse-epochs400-2/ --seed 2 --width 1 -e 400 --model wide_resnet50 --dataset cifar10
+python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-mse-epochs400-2/ --seed 2 --width 1 -e 400 --model wide_resnet50 --dataset cifar10
 
-python train.py --bias --loss cross_entropy --save-path ./res50_cifar10/wideres50-1-cifar10-ce-epochs200-2/ --seed 2 --width 1 -e 200 --model wide_resnet50 --dataset cifar10
-python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-ce-epochs200-2/ --seed 2 --width 1 -e 200 --model wide_resnet50 --dataset cifar10
+python train.py --bias --loss mean_square_error --save-path ./res50_cifar10/wideres50-1-cifar10-mse-epochs200-2/ --seed 2 --width 1 -e 200 --model wide_resnet50 --dataset cifar10
+python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-mse-epochs200-2/ --seed 2 --width 1 -e 200 --model wide_resnet50 --dataset cifar10
 
-python train.py --bias --loss cross_entropy --save-path ./res50_cifar10/wideres50-1-cifar10-ce-epochs100-2/ --seed 2 --width 1 -e 100 --model wide_resnet50 --dataset cifar10
-python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-ce-epochs100-2/ --seed 2 --width 1 -e 100 --model wide_resnet50 --dataset cifar10
+python train.py --bias --loss mean_square_error --save-path ./res50_cifar10/wideres50-1-cifar10-mse-epochs100-2/ --seed 2 --width 1 -e 100 --model wide_resnet50 --dataset cifar10
+python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-mse-epochs100-2/ --seed 2 --width 1 -e 100 --model wide_resnet50 --dataset cifar10
 
 
 # MSE width=0.5
-python train.py --bias --loss cross_entropy --save-path ./res50_cifar10/wideres50-05-cifar10-ce-epochs800-2/ --seed 2 --width 0.5 -e 800 --model wide_resnet50 --dataset cifar10
-python evaluate.py --bias --save-path ./res50_cifar10/wideres50-05-cifar10-ce-epochs800-2/ --seed 2 --width 0.5 -e 800 --model wide_resnet50 --dataset cifar10
+python train.py --bias --loss mean_square_error --save-path ./res50_cifar10/wideres50-05-cifar10-mse-epochs800-2/ --seed 2 --width 0.5 -e 800 --model wide_resnet50 --dataset cifar10
+python evaluate.py --bias --save-path ./res50_cifar10/wideres50-05-cifar10-mse-epochs800-2/ --seed 2 --width 0.5 -e 800 --model wide_resnet50 --dataset cifar10
 
-python train.py --bias --loss cross_entropy --save-path ./res50_cifar10/wideres50-05-cifar10-ce-epochs400-2/ --seed 2 --width 0.5 -e 400 --model wide_resnet50 --dataset cifar10
-python evaluate.py --bias --save-path ./res50_cifar10/wideres50-05-cifar10-ce-epochs400-2/ --seed 2 --width 0.5 -e 400 --model wide_resnet50 --dataset cifar10
+python train.py --bias --loss mean_square_error --save-path ./res50_cifar10/wideres50-05-cifar10-mse-epochs400-2/ --seed 2 --width 0.5 -e 400 --model wide_resnet50 --dataset cifar10
+python evaluate.py --bias --save-path ./res50_cifar10/wideres50-05-cifar10-mse-epochs400-2/ --seed 2 --width 0.5 -e 400 --model wide_resnet50 --dataset cifar10
 
-python train.py --bias --loss cross_entropy --save-path ./res50_cifar10/wideres50-05-cifar10-ce-epochs200-2/ --seed 2 --width 0.5 -e 200 --model wide_resnet50 --dataset cifar10
-python evaluate.py --bias --save-path ./res50_cifar10/wideres50-05-cifar10-ce-epochs200-2/ --seed 2 --width 0.5 -e 200 --model wide_resnet50 --dataset cifar10
+python train.py --bias --loss mean_square_error --save-path ./res50_cifar10/wideres50-05-cifar10-mse-epochs200-2/ --seed 2 --width 0.5 -e 200 --model wide_resnet50 --dataset cifar10
+python evaluate.py --bias --save-path ./res50_cifar10/wideres50-05-cifar10-mse-epochs200-2/ --seed 2 --width 0.5 -e 200 --model wide_resnet50 --dataset cifar10
 
-python train.py --bias --loss cross_entropy --save-path ./res50_cifar10/wideres50-05-cifar10-ce-epochs100-2/ --seed 2 --width 0.5 -e 100 --model wide_resnet50 --dataset cifar10
-python evaluate.py --bias --save-path ./res50_cifar10/wideres50-05-cifar10-ce-epochs100-2/ --seed 2 --width 0.5 -e 100 --model wide_resnet50 --dataset cifar10
+python train.py --bias --loss mean_square_error --save-path ./res50_cifar10/wideres50-05-cifar10-mse-epochs100-2/ --seed 2 --width 0.5 -e 100 --model wide_resnet50 --dataset cifar10
+python evaluate.py --bias --save-path ./res50_cifar10/wideres50-05-cifar10-mse-epochs100-2/ --seed 2 --width 0.5 -e 100 --model wide_resnet50 --dataset cifar10
 
 
 
