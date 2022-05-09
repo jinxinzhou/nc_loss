@@ -79,7 +79,8 @@ def train_single_epoch(epoch,
                        gamma=1.0,
                        lamda=1.0,
                        smoothing=0.05,
-                       loss_mean=False):
+                       loss_mean=False,
+                       num_classes=100):
     '''
     Util method for training a model for a single epoch.
     '''
@@ -99,9 +100,9 @@ def train_single_epoch(epoch,
 
         logits, _ = model(data)
         if ('mmce' in loss_function):
-            loss = (len(data) * loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, device=device))
+            loss = (len(data) * loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, num_classes=num_classes, device=device))
         else:
-            loss = loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing,device=device)
+            loss = loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, num_classes=num_classes, device=device)
 
         if loss_mean:
             loss = loss / len(data)
@@ -134,7 +135,8 @@ def val_single_epoch(epoch,
                       loss_function='cross_entropy',
                       gamma=1.0,
                       lamda=1.0,
-                      smoothing=0.05):
+                      smoothing=0.05,
+                     num_classes=100):
     '''
     Util method for testing a model for a single epoch.
     '''
@@ -152,9 +154,9 @@ def val_single_epoch(epoch,
 
             logits, _ = model(data)
             if ('mmce' in loss_function):
-                loss += (len(data) * loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, device=device).item())
+                loss += (len(data) * loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, num_classes=num_classes, device=device).item())
             else:
-                loss += loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, device=device).item()
+                loss += loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, num_classes=num_classes, device=device).item()
             num_samples += len(data)
 
             prec1, prec5 = compute_accuracy(logits.detach().data, labels.detach().data, topk=(1, 5))
@@ -173,7 +175,8 @@ def test_single_epoch(epoch,
                       loss_function='cross_entropy',
                       gamma=1.0,
                       lamda=1.0,
-                      smoothing=0.05):
+                      smoothing=0.05,
+                      num_classes=100):
     '''
     Util method for testing a model for a single epoch.
     '''
@@ -187,9 +190,9 @@ def test_single_epoch(epoch,
 
             logits, _ = model(data)
             if ('mmce' in loss_function):
-                loss += (len(data) * loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, device=device).item())
+                loss += (len(data) * loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, num_classes=num_classes, device=device).item())
             else:
-                loss += loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, device=device).item()
+                loss += loss_function_dict[loss_function](logits, labels, gamma=gamma, lamda=lamda, smoothing=smoothing, num_classes=num_classes, device=device).item()
             num_samples += len(data)
 
     print('======> Test set loss: {:.4f}'.format(
