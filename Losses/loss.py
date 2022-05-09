@@ -22,7 +22,7 @@ def cross_entropy(logits, targets, **kwargs):
 
 
 def mean_square_error(logits, targets, **kwargs):
-    return F.mse_loss(logits, F.one_hot(targets, num_classes=100).type(torch.FloatTensor).to(logits.device), reduction='sum')
+    return F.mse_loss(logits, 15*F.one_hot(targets, num_classes=kwargs['num_classes']).type(torch.FloatTensor).to(logits.device), reduction='sum')
 
 
 def focal_loss(logits, targets, **kwargs):
