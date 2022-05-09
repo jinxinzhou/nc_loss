@@ -1,12 +1,12 @@
 # #!/bin/bash
 # #SBATCH --account=qingqu1
-# #SBATCH --job-name=ce_1
+# #SBATCH --job-name=ce_1_1
 # #SBATCH --nodes=1
 # #SBATCH --time=96:00:00
 # #SBATCH --mem=8GB
 # #SBATCH --partition=gpu
 # #SBATCH --gres=gpu:1
-# #SBATCH --output=ce_1_%j.out
+# #SBATCH --output=ce_1_1_%j.out
 
 # module purge
 # module load python3.7-anaconda/2020.02
