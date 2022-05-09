@@ -14,15 +14,6 @@
 eval "$(conda shell.bash hook)"
 conda activate /scratch/qingqu_root/qingqu1/jinxinz/DL/ImgMLP
 
-# loss=$1
-# save_path=$2
-# seed=$3
-# width=$4
-# epochs=$1
-
-# python train.py --bias --loss $loss --save-path $save_path --seed $seed --width $width -e $epochs
-# python evaluate.py --bias --save-path $save_path --seed $seed --width $width -e $epochs
-
 # LS width=1
 python train.py --bias --loss label_smoothing --save-path ./res50_cifar10/wideres50-1-cifar10-ls-epochs800-2/ --seed 2 --width 1 -e 800 --model wide_resnet50 --dataset cifar10 --smoothing 0.1
 python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-ls-epochs800-2/ --seed 2 --width 1 -e 800 --model wide_resnet50 --dataset cifar10
