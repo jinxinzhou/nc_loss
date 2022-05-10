@@ -467,7 +467,7 @@ if __name__ == "__main__":
     mu_G_test, mu_c_dict_test, before_class_dict_test, after_class_dict_test, \
             test_acc1, test_acc5 = compute_info(net, test_loader, device)
 
-    info_dict['train_last_top1'] = train_acc1
+    info_dict['train_best_top1'] = train_acc1
     info_dict['val_best_top1'] = val_acc1
     info_dict['best_val_test_top1'] = test_acc1
 
