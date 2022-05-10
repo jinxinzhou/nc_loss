@@ -25,7 +25,7 @@ python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-ls-epo
 python train.py --bias --loss label_smoothing --save-path ./res50_cifar10/wideres50-1-cifar10-ls-epochs200-1/ --seed 1 --width 1 -e 200 --model wide_resnet50 --dataset cifar10 --smoothing 0.1
 python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-ls-epochs200-1/ --seed 1 --width 1 -e 200 --model wide_resnet50 --dataset cifar10
 
-python train.py --bias --loss label_smoothing --save-path ./res50_cifar10/wideres50-2-cifar10-ls-epochs100-1/ --seed 1 --width 1 -e 100 --model wide_resnet50 --dataset cifar10 --smoothing 0.1
+python train.py --bias --loss label_smoothing --save-path ./res50_cifar10/wideres50-1-cifar10-ls-epochs100-1/ --seed 1 --width 1 -e 100 --model wide_resnet50 --dataset cifar10 --smoothing 0.1
 python evaluate.py --bias --save-path ./res50_cifar10/wideres50-1-cifar10-ls-epochs100-1/ --seed 1 --width 1 -e 100 --model wide_resnet50 --dataset cifar10
 
 
