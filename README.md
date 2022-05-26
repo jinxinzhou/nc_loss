@@ -9,9 +9,9 @@ By default, the code assumes the datasets for CIFAR100 are stored under `~/data/
 ### Training with different losses, seeds, witdths and epochs
 #### loss is chosed from one of [cross_entropy, mean_square_error, focal_loss, label_smoothing]. The default is set to be "cross_entropy";
 #### seed is chosed from one of [1, 123, 321]. The default is set to be "1";
-#### width is chosed from one of [1, 2, 4, 8, 16]. The default is set to be "4";
-#### epoch is chosed from one of [100, 200, 400, 800]. The default is set to be "400".
-Additional, I set the args.save-path as "./checkpoints/wideres26-width-cifar100-loss-epochs#-seed/" format, such as "./checkpoints/wideres26-8-cifar100-ce-epochs400-1/" and "./checkpoints/wideres26-4-cifar100-fl-epochs800-123/". 
+#### width is chosed from one of [0.25, 0.5, 1, 2]. The default is set to be "2";
+#### epoch is chosed from one of [100, 200, 400, 800]. The default is set to be "800".
+Additional, I set the args.save-path as "./wideres50_cifar100/wideres50-width-loss-epochs-seed/" format, such as "./wideres50_cifar100/wideres50-2-ce-800-1/" and "./wideres50_cifar100/wideres50-2-mse-800-123/". 
 
 ~~~python
 $ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs400-1/ 1 8 400
