@@ -13,206 +13,33 @@ By default, the code assumes the datasets for CIFAR100 are stored under `~/data/
 #### epoch is chosed from one of [100, 200, 400, 800]. The default is set to be "800".
 Additional, I set the args.save-path as "./wideres50_cifar100/wideres50-width-loss-epochs-seed/" format, such as "./wideres50_cifar100/wideres50-2-ce-800-1/" and "./wideres50_cifar100/wideres50-2-mse-800-123/". 
 
+## Some training examples on CIFAR100: 
 ~~~python
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs400-1/ 1 8 400
+$ python train.py --bias --loss cross_entropy --save-path ./wideres50_cifar100/wideres50-2-ce-800-1/ --seed 1 --width 2 -e 800 --model wide_resnet50 --dataset cifar100
+$ python train.py --bias --loss mean_square_error --save-path ./wideres50_cifar100/wideres50-1-mse-400-123/ --seed 123 --width 1 -e 400 --model wide_resnet50 --dataset cifar100
+$ python train.py --bias --loss focal_loss --save-path ./wideres50_cifar100/wideres50-05-fl-200-321/ --seed 321 --width 0.5 -e 200 --model wide_resnet50 --dataset cifar100
+$ python train.py --bias --loss label_smoothing --save-path ./wideres50_cifar100/wideres50-025-ls-100-1/ --seed 1 --width 0.25 -e 100 --model wide_resnet50 --dataset cifar100
 ~~~
 
-# Kangning:
-## MSE: width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
+## Some evaluate examples on CIFAR100: 
 ~~~python
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs100-1/ 1 8 100
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs100-123/ 123 8 100
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs100-321/ 321 8 100
+$ python evaluate.py --bias --save-path ./wideres50_cifar100/wideres50-2-ce-800-1/ --seed 1 --width 2 -e 800 --model wide_resnet50 --dataset cifar100
+$ python evaluate.py --bias --save-path ./wideres50_cifar100/wideres50-2-mse-800-123/ --seed 123 --width 1 -e 400 --model wide_resnet50 --dataset cifar100
+$ python evaluate.py --bias --save-path ./wideres50_cifar100/wideres50-2-fl-800-321/ --seed 321 --width 0.5 -e 200 --model wide_resnet50 --dataset cifar100
+$ python evaluate.py --bias --save-path ./wideres50_cifar100/wideres50-2-ls-800-1/ --seed 1 --width 0.25 -e 100 --model wide_resnet50 --dataset cifar100
 ~~~
 
+## Some training examples on CIFAR10: 
 ~~~python
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs200-1/ 1 8 200
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs200-123/ 123 8 200
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs200-321/ 321 8 200
+$ python train.py --bias --loss cross_entropy --save-path ./wideres50_cifar10/wideres50-2-ce-800-1/ --seed 1 --width 2 -e 800 --model wide_resnet50 --dataset cifar10
+$ python train.py --bias --loss mean_square_error --save-path ./wideres50_cifar10/wideres50-1-mse-400-2/ --seed 2 --width 1 -e 400 --model wide_resnet50 --dataset cifar10
+$ python train.py --bias --loss focal_loss --save-path ./wideres50_cifar10/wideres50-05-fl-200-3/ --seed 3 --width 0.5 -e 200 --model wide_resnet50 --dataset cifar10
+$ python train.py --bias --loss label_smoothing --save-path ./wideres50_cifar10/wideres50-025-ls-100-1/ --seed 1 --width 0.25 -e 100 --model wide_resnet50 --dataset cifar10
 ~~~
 
+## Some evaluate examples on CIFAR10: 
 ~~~python
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs400-1/ 1 8 400
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs400-123/ 123 8 400
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs400-321/ 321 8 400
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs800-1/ 1 8 800
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs800-123/ 123 8 800
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-8-cifar100-mse-epochs800-321/ 321 8 800
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs100-1/ 1 16 100
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs100-123/ 123 16 100
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs100-321/ 321 16 100
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs200-1/ 1 16 200
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs200-123/ 123 16 200
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs200-321/ 321 16 200
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs400-1/ 1 16 400
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs400-123/ 123 16 400
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs400-321/ 321 16 400
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs800-1/ 1 16 800
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs800-123/ 123 16 800
-$ sbatch cmds-wide.sh mean_square_error ./checkpoints/wideres26-16-cifar100-mse-epochs800-321/ 321 16 800
-~~~
-
-## Label Smooth: width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
-~~~python
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs100-1/ 1 8 100
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs100-123/ 123 8 100
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs100-321/ 321 8 100
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs200-1/ 1 8 200
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs200-123/ 123 8 200
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs200-321/ 321 8 200
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs400-1/ 1 8 400
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs400-123/ 123 8 400
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs400-321/ 321 8 400
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs800-1/ 1 8 800
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs800-123/ 123 8 800
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-8-cifar100-ls-epochs800-321/ 321 8 800
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs100-1/ 1 16 100
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs100-123/ 123 16 100
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs100-321/ 321 16 100
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs200-1/ 1 16 200
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs200-123/ 123 16 200
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs200-321/ 321 16 200
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs400-1/ 1 16 400
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs400-123/ 123 16 400
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs400-321/ 321 16 400
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs800-1/ 1 16 800
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs800-123/ 123 16 800
-$ sbatch cmds-wide.sh label_smoothing ./checkpoints/wideres26-16-cifar100-ls-epochs800-321/ 321 16 800
-~~~
-
-# Sheng:
-## CE: width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
-~~~python
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs100-1/ 1 8 100
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs100-123/ 123 8 100
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs100-321/ 321 8 100
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs200-1/ 1 8 200
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs200-123/ 123 8 200
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs200-321/ 321 8 200
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs400-1/ 1 8 400
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs400-123/ 123 8 400
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs400-321/ 321 8 400
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs800-1/ 1 8 800
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs800-123/ 123 8 800
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-8-cifar100-ce-epochs800-321/ 321 8 800
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs100-1/ 1 16 100
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs100-123/ 123 16 100
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs100-321/ 321 16 100
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs200-1/ 1 16 200
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs200-123/ 123 16 200
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs200-321/ 321 16 200
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs400-1/ 1 16 400
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs400-123/ 123 16 400
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs400-321/ 321 16 400
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs800-1/ 1 16 800
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs800-123/ 123 16 800
-$ sbatch cmds-wide.sh cross_entropy ./checkpoints/wideres26-16-cifar100-ce-epochs800-321/ 321 16 800
-~~~
-
-## Focal loss: width=[8, 16]; epochs=[100, 200, 400, 800]; seed=[1, 123, 321]
-~~~python
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs100-1/ 1 8 100
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs100-123/ 123 8 100
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs100-321/ 321 8 100
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs200-1/ 1 8 200
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs200-123/ 123 8 200
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs200-321/ 321 8 200
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs400-1/ 1 8 400
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs400-123/ 123 8 400
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs400-321/ 321 8 400
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs800-1/ 1 8 800
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs800-123/ 123 8 800
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-8-cifar100-fl-epochs800-321/ 321 8 800
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs100-1/ 1 16 100
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs100-123/ 123 16 100
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs100-321/ 321 16 100
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs200-1/ 1 16 200
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs200-123/ 123 16 200
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs200-321/ 321 16 200
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs400-1/ 1 16 400
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs400-123/ 123 16 400
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs400-321/ 321 16 400
-~~~
-
-~~~python
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs800-1/ 1 16 800
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs800-123/ 123 16 800
-$ sbatch cmds-wide.sh focal_loss ./checkpoints/wideres26-16-cifar100-fl-epochs800-321/ 321 16 800
-~~~
-
-
+$ python evaluate.py --bias --save-path ./wideres50_cifar10/wideres50-2-ce-800-1/ --seed 1 --width 2 -e 800 --model wide_resnet50 --dataset cifar10
+$ python evaluate.py --bias --save-path ./wideres50_cifar10/wideres50-2-mse-800-2/ --seed 2 --width 1 -e 400 --model wide_resnet50 --dataset cifar10
+$ python evaluate.py --bias --save-path ./wideres50_cifar10/wideres50-2-fl-800-3/ --seed 3 --width 0.5 -e 200 --model wide_resnet50 --dataset cifar10
+$ python evaluate.py --bias --save-path ./wideres50_cifar10/wideres50-2-ls-800-1/ --seed 1 --width 0.25 -e 100 --model wide_resnet50 --dataset cifar10
