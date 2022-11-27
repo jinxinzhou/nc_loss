@@ -62,3 +62,29 @@ $ python evaluate.py --bias --save-path ./wideres50_cifar10/wideres50-2-ce-800-1
 $ python evaluate.py --bias --save-path ./wideres50_cifar10/wideres50-2-mse-800-2/ --seed 2 --width 1 -e 400 --model wide_resnet50 --dataset cifar10
 $ python evaluate.py --bias --save-path ./wideres50_cifar10/wideres50-2-fl-800-3/ --seed 3 --width 0.5 -e 200 --model wide_resnet50 --dataset cifar10
 $ python evaluate.py --bias --save-path ./wideres50_cifar10/wideres50-2-ls-800-1/ --seed 1 --width 0.25 -e 100 --model wide_resnet50 --dataset cifar10
+
+
+### Plot the figures in paper
+Finally, the figures in the paper can be reproduced as following:
+
+1.The experiment of the dynamic of neural collapse metrics can be visualized by plotting them in figures:
+~~~python
+$ python plot.py
+~~~
+
+2.The experiment of the heatmap of test accuracy can be visualized by plotting them in figures:
+
+~~~python
+$ python plot_heatmap.py
+~~~
+
+## Citation and reference 
+For technical details and full experimental results, please check [our paper](https://arxiv.org/pdf/2203.01238.pdf).
+```
+@article{zhou2022all,
+  title={Are All Losses Created Equal: A Neural Collapse Perspective},
+  author={Zhou, Jinxin and You, Chong and Li, Xiao and Liu, Kangning and Liu, Sheng and Qu, Qing and Zhu, Zhihui},
+  journal={arXiv preprint arXiv:2210.02192},
+  year={2022}
+}
+```
