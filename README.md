@@ -79,7 +79,7 @@ $ python plot_heatmap.py
 ~~~
 
 ## Citation and reference 
-For technical details and full experimental results, please check [our paper](https://arxiv.org/pdf/2203.01238.pdf).
+For technical details and full experimental results, please check [our paper](https://arxiv.org/pdf/2210.02192.pdf).
 ```
 @article{zhou2022all,
   title={Are All Losses Created Equal: A Neural Collapse Perspective},
